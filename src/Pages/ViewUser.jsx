@@ -85,7 +85,7 @@ function ViewUser() {
             <strong>Age:</strong> {user.age}
         </p>
         <p className="text-lg text-gray-700 mb-1">
-            <strong>Date of Birth:</strong> {user.dateOfBirth}
+            <strong>Date of Birth:</strong> {user.dateOfBirth.split('T')[0]}
         </p>
         {/* <p className="text-lg text-gray-700 mb-1">
             <strong>Password:</strong>{user.password}

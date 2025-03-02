@@ -40,7 +40,7 @@ function RegisterForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (id) {  // If id exists, update user; otherwise, create new user
+      if (id) {  
         await updateUser(id, formData);
       } else {
         await createUser(formData);

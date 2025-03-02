@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'https://user-reg-system.onrender.com';
 
 //gettgenders
 export const getGenders=async()=>{
     try {
-       const response=await axios.get(`${API_URL}/genders`) 
+       const response=await axios.get(`${API_URL}/api/genders`) 
        return response.data
     } catch (error) {
         console.error(error);
@@ -16,7 +16,7 @@ export const getGenders=async()=>{
 // Create User
 export const createUser = async (formData) => {
   try {
-    const response = await axios.post(`${API_URL}/auth/createUser`, formData);
+    const response = await axios.post(`${API_URL}/api/auth/createUser`, formData);
     localStorage.setItem('token',response.data.token);
   
     return response.data;
@@ -30,7 +30,7 @@ export const getUser = async () => {
   try {
     const token = localStorage.getItem("token");
     console.log('token: ', token);
-    const response = await axios.get(`${API_URL}/auth/getUser`,{
+    const response = await axios.get(`${API_URL}/api/auth/getUser`,{
         headers: { Authorization: `Bearer ${token}` }
     });
     console.log('response: ', response);
@@ -43,7 +43,7 @@ export const getUser = async () => {
 // Update User
 export const updateUser = async (id, updatedData) => {
   try {
-    const response = await axios.put(`${API_URL}/auth/updateUser/${id}`, updatedData);
+    const response = await axios.put(`${API_URL}/api/auth/updateUser/${id}`, updatedData);
     return response.data;
   } catch (error) {
     throw error.response?.data || "Failed to update user";
@@ -53,7 +53,7 @@ export const updateUser = async (id, updatedData) => {
 // Delete User
 export const deleteUser = async (id) => {
   try {
-    const response = await axios.delete(`${API_URL}/auth/deleteUser/${id}`);
+    const response = await axios.delete(`${API_URL}/api/auth/deleteUser/${id}`);
     return response.data;
   } catch (error) {
     throw error.response?.data || "Failed to delete user";
